@@ -20,6 +20,10 @@ public class HeadersBuilder {
     }
 
     private Map<String, List<String>> toMap(List<KeyValuePair> list) {
+        if (list == null) {
+            return Map.of();
+        }
+
         return list.stream().collect(groupingBy(KeyValuePair::getKey, mapping(KeyValuePair::getValue, toList())));
     }
 }
